@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <title>Тип 8 — Лідер</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="nav-links">
+      <a href="{{ url_for('index') }}" class="link">← Назад до тесту</a>
+      <a href="{{ url_for('result') }}" class="link">⬅ Повернутись до результатів</a>
+    </div>
+
+    <h1>Тип 8 — Лідер</h1>
+    <img src="{{ url_for('static', filename='images/type_8.jpg') }}" class="type-image small" alt="Тип 8">
+
+    <p><strong>Ключова риса:</strong> сила, впевненість, рішучість.</p>
+    <p><strong>Сильні сторони:</strong> відвага, справедливість, захист інших.</p>
+    <p><strong>Тіньова сторона:</strong> агресивність, домінування, нетерпимість.</p>
+    <p><strong>Порада:</strong> справжня сила — у здатності довіряти і співпрацювати.</p>
+
+    <div class="nav-links">
+      <a href="{{ url_for('index') }}" class="button">Повернутись до тесту</a>
+      <a href="{{ url_for('type_page', letter='I') }}" class="button prev">← Попередній тип</a>
+      <a href="{{ url_for('type_page', letter='A') }}" class="button next">Наступний тип →</a>
+    </div>
+  </div>
+</body>
+</html>

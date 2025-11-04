@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <title>Тип 6 — Лояльний</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="nav-links">
+      <a href="{{ url_for('index') }}" class="link">← Назад до тесту</a>
+      <a href="{{ url_for('result') }}" class="link">⬅ Повернутись до результатів</a>
+    </div>
+
+    <h1>Тип 6 — Лояльний</h1>
+    <img src="{{ url_for('static', filename='images/type_6.jpg') }}" class="type-image small" alt="Тип 6">
+
+    <p><strong>Ключова риса:</strong> прагнення безпеки, стабільності, довіри.</p>
+    <p><strong>Сильні сторони:</strong> відповідальність, надійність, підтримка.</p>
+    <p><strong>Тіньова сторона:</strong> надмірні сумніви, страхи, схильність до тривоги.</p>
+    <p><strong>Порада:</strong> розвивай довіру до себе — це джерело справжньої безпеки.</p>
+
+    <div class="nav-links">
+      <a href="{{ url_for('index') }}" class="button">Повернутись до тесту</a>
+      <a href="{{ url_for('type_page', letter='H') }}" class="button prev">← Попередній тип</a>
+      <a href="{{ url_for('type_page', letter='I') }}" class="button next">Наступний тип →</a>
+    </div>
+  </div>
+</body>
+</html>

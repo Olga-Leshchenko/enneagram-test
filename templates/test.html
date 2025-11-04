@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <title>Тест Енеаграми</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #f5f7fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .pair-card {
+      margin-bottom: 25px;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+      background-color: #fafafa;
+    }
+
+    .pair-title {
+      font-weight: 600;
+      color: #1976d2;
+      margin-bottom: 10px;
+    }
+
+    .option {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin: 5px 0;
+    }
+
+    .req {
+      display: none;
+      color: #d32f2f;
+      font-size: 14px;
+      margin-top: 8px;
+    }
+
+    .footer {
+      text-align: right;
+      margin-top: 30px;
+    }
+
+    .btn {
+      background-color: #1976d2;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn:hover {
+      background-color: #1565c0;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Тест Енеаграми</h1>
+    <p>У кожній парі тверджень оберіть лише одне, яке вам ближче.</p>
+
+    <form id="enneaForm" method="post" action="{{ url_for('index') }}">
+      {% for pair in pairs %}
+      {% set i = loop.index0 %}
+      <div class="pair-card" id="q{{ i }}">
+        <div class="pair-title">Пара {{ loop.index }} з {{ pairs|length }}</div>
+
+        <label class="option">
+          <input type="radio" name="p_{{ i }}" value="L">
+          <span>{{ pair.left.text }}</span>
+        </label>
+
+        <label class="option">
+          <input type="radio" name="p_{{ i }}" value="R">
+          <span>{{ pair.right.text }}</span>
+        </label>
+
+        <div class="req">⚠ Не вибрано варіант у цій парі</div>
+      </div>
+      {% endfor %}
+
+      <div class="footer">
+        <button type="button" id="finishBtn" class="btn">Завершити тест →</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("finishBtn").addEventListener("click", function() {
+      const total = {{ pairs|length }};
+      let unanswered = [];
+
+      for (let i = 0; i < total; i++) {
+        const radios = document.querySelectorAll(`input[name="p_${i}"]`);
+        const selected = [...radios].some(r => r.checked);
+        const warn = document.querySelector(`#q${i} .req`);
+        if (!selected) {
+          warn.style.display = "block";
+          unanswered.push(i + 1);
+        } else {
+          warn.style.display = "none";
+        }
+      }
+
+      if (unanswered.length > 0) {
+        const msg = `⚠ Ви не відповіли на ${unanswered.length} пар(и): ${unanswered.slice(0,10).join(', ')}...`;
+        if (confirm(msg + "\n\nБажаєте завершити тест попри це?")) {
+          document.getElementById("enneaForm").submit();
+        }
+      } else {
+        document.getElementById("enneaForm").submit();
+      }
+    });
+  </script>
+</body>
+</html>
+<!doctype html>
+<html lang="uk">    

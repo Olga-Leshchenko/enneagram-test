@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <title>Результати тесту Енеаграми</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    .type-link {
+      color: #1565c0;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .type-link:hover {
+      color: #0d47a1;
+      text-decoration: underline;
+    }
+    .highlight {
+      background-color: #e8f5e9;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Результати тесту</h1>
+
+    <table class="result-table">
+      <tr>
+        <th>Літера</th>
+        <th>Тип</th>
+        <th>Бали</th>
+      </tr>
+
+      {% for letter, value in scores.items() %}
+        <tr {% if letter == top_letter %}class="highlight"{% endif %}>
+          <td>{{ letter }}</td>
+          <td>
+            {% if letter == "A" %}
+              <a href="{{ url_for('type_page', letter='A') }}" class="type-link">9 — Миротворець</a>
+            {% elif letter == "B" %}
+              <a href="{{ url_for('type_page', letter='B') }}" class="type-link">6 — Лояльний</a>
+            {% elif letter == "C" %}
+              <a href="{{ url_for('type_page', letter='C') }}" class="type-link">3 — Досягатор</a>
+            {% elif letter == "D" %}
+              <a href="{{ url_for('type_page', letter='D') }}" class="type-link">1 — Реформатор</a>
+            {% elif letter == "E" %}
+              <a href="{{ url_for('type_page', letter='E') }}" class="type-link">4 — Індивідуаліст</a>
+            {% elif letter == "F" %}
+              <a href="{{ url_for('type_page', letter='F') }}" class="type-link">2 — Помічник</a>
+            {% elif letter == "G" %}
+              <a href="{{ url_for('type_page', letter='G') }}" class="type-link">8 — Лідер</a>
+            {% elif letter == "H" %}
+              <a href="{{ url_for('type_page', letter='H') }}" class="type-link">5 — Дослідник</a>
+            {% elif letter == "I" %}
+              <a href="{{ url_for('type_page', letter='I') }}" class="type-link">7 — Ентузіаст</a>
+            {% endif %}
+          </td>
+          <td>{{ value }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+
+    <div class="top-result">
+      <h2>Ваш головний тип: {{ top_type.num }} — {{ top_type.name }}</h2>
+      <p>Ви набрали {{ top_score }} балів за цей тип.</p>
+      <a href="{{ url_for('type_page', letter=top_letter) }}" class="button next">
+        Докладніше про мій тип →
+      </a>
+    </div>
+
+    <div style="margin-top: 30px;">
+      <a href="{{ url_for('index') }}" class="button">Пройти тест ще раз</a>
+    </div>
+  </div>
+</body>
+</html>
