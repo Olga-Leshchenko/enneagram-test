@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <title>Тест Енеаграми</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Тест Енеаграми</h1>
+    <p>У кожній парі оберіть лише один варіант, який вам ближчий.</p>
+
+    <form method="post">
+      {% for p in pairs %}
+        <div class="pair">
+          <p><strong>{{ loop.index }}.</strong></p>
+          <label><input type="radio" name="p_{{ loop.index0 }}" value="L"> {{ p.left.text }}</label><br>
+          <label><input type="radio" name="p_{{ loop.index0 }}" value="R"> {{ p.right.text }}</label>
+        </div>
+      {% endfor %}
+      <button type="submit">Завершити тест</button>
+    </form>
+  </div>
+</body>
+</html>

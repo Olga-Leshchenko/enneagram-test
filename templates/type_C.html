@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <title>Тип 3 — Досягатор</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="nav-links">
+      <a href="{{ url_for('index') }}" class="link">← Назад до тесту</a>
+      <a href="{{ url_for('result') }}" class="link">⬅ Повернутись до результатів</a>
+    </div>
+
+    <h1>Тип 3 — Досягатор</h1>
+    <img src="{{ url_for('static', filename='images/type_3.jpg') }}" class="type-image small" alt="Тип 3">
+
+    <p><strong>Ключова риса:</strong> орієнтація на результат, ефективність, визнання.</p>
+    <p><strong>Сильні сторони:</strong> працелюбність, цілеспрямованість, мотивація.</p>
+    <p><strong>Тіньова сторона:</strong> надмірна конкуренція, залежність від чужої думки.</p>
+    <p><strong>Порада:</strong> цінуй себе не лише за досягнення, а й за те, ким ти є.</p>
+
+    <div class="nav-links">
+      <a href="{{ url_for('index') }}" class="button">Повернутись до тесту</a>
+      <a href="{{ url_for('type_page', letter='F') }}" class="button prev">← Попередній тип</a>
+      <a href="{{ url_for('type_page', letter='E') }}" class="button next">Наступний тип →</a>
+    </div>
+  </div>
+</body>
+</html>

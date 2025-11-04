@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <title>Тип 7 — Ентузіаст</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="nav-links">
+      <a href="{{ url_for('index') }}" class="link">← Назад до тесту</a>
+      <a href="{{ url_for('result') }}" class="link">⬅ Повернутись до результатів</a>
+    </div>
+
+    <h1>Тип 7 — Ентузіаст</h1>
+    <img src="{{ url_for('static', filename='images/type_7.jpg') }}" class="type-image small" alt="Тип 7">
+
+    <p><strong>Ключова риса:</strong> оптимізм, активність, жага до пригод.</p>
+    <p><strong>Сильні сторони:</strong> енергійність, винахідливість, допитливість.</p>
+    <p><strong>Тіньова сторона:</strong> уникання труднощів, поверховість, незібраність.</p>
+    <p><strong>Порада:</strong> глибина життя не в кількості досвіду, а в його усвідомленні.</p>
+
+    <div class="nav-links">
+      <a href="{{ url_for('index') }}" class="button">Повернутись до тесту</a>
+      <a href="{{ url_for('type_page', letter='B') }}" class="button prev">← Попередній тип</a>
+      <a href="{{ url_for('type_page', letter='G') }}" class="button next">Наступний тип →</a>
+    </div>
+  </div>
+</body>
+</html>

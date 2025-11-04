@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <title>Тип 2 — Помічник</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="nav-links">
+      <a href="{{ url_for('index') }}" class="link">← Назад до тесту</a>
+      <a href="{{ url_for('result') }}" class="link">⬅ Повернутись до результатів</a>
+    </div>
+
+    <h1>Тип 2 — Помічник</h1>
+    <img src="{{ url_for('static', filename='images/type_2.jpg') }}" class="type-image small" alt="Тип 2">
+
+    <p><strong>Ключова риса:</strong> прагнення бути потрібним і коханим.</p>
+    <p><strong>Сильні сторони:</strong> турбота, щедрість, емпатія, доброта.</p>
+    <p><strong>Тіньова сторона:</strong> залежність від схвалення, самопожертва.</p>
+    <p><strong>Порада:</strong> допомагай іншим, але не забувай про себе.</p>
+
+    <div class="nav-links">
+      <a href="{{ url_for('index') }}" class="button">Повернутись до тесту</a>
+      <a href="{{ url_for('type_page', letter='D') }}" class="button prev">← Попередній тип</a>
+      <a href="{{ url_for('type_page', letter='C') }}" class="button next">Наступний тип →</a>
+    </div>
+  </div>
+</body>
+</html>

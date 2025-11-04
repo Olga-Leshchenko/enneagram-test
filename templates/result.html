@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <title>Результати тесту Енеаграми</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Результати тесту</h1>
+
+    <table class="result-table">
+      <tr>
+        <th>Літера</th>
+        <th>Тип</th>
+        <th>Бали</th>
+      </tr>
+      {% for letter, value in scores.items() %}
+        <tr {% if letter == top_letter %}class="highlight"{% endif %}>
+          <td>{{ letter }}</td>
+          <td>
+            {% if letter == "A" %}9 — Миротворець
+            {% elif letter == "B" %}6 — Лояльний
+            {% elif letter == "C" %}3 — Досягатор
+            {% elif letter == "D" %}1 — Реформатор
+            {% elif letter == "E" %}4 — Індивідуаліст
+            {% elif letter == "F" %}2 — Помічник
+            {% elif letter == "G" %}8 — Лідер
+            {% elif letter == "H" %}5 — Дослідник
+            {% elif letter == "I" %}7 — Ентузіаст
+            {% endif %}
+          </td>
+          <td>{{ value }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+
+    <div class="top-result">
+      <h2>Ваш головний тип: {{ top_type.num }} — {{ top_type.name }}</h2>
+      <p>Ви набрали {{ top_score }} балів за цей тип.</p>
+      <a href="{{ url_for('type_page', letter=top_letter) }}" class="button next">Докладніше про мій тип →</a>
+    </div>
+
+    <div style="margin-top: 30px;">
+      <a href="{{ url_for('index') }}" class="button">Пройти тест ще раз</a>
+    </div>
+  </div>
+</body>
+</html>
