@@ -32,10 +32,13 @@ def index():
 
     return render_template("index.html")
 
-@app.route('/test')
+@app.route('/test', methods=["GET"])
 def test():
+    # Якщо користувач відкрив сайт вперше або після пробудження Render
+    # і в сесії ще не зберігалися відповіді → перенаправити на головну
+    if "scores" not in session:
+        return redirect(url_for("index"))
     return render_template('test.html', pairs=PAIRS)
-
 
 @app.route("/result")
 def result():
